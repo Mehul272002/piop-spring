@@ -27,8 +27,22 @@ private String firstName;
 @Column(nullable=false,length=20)
 private String lastName;
 
+@Column(nullable=false,length=20)
+private String userType;
+
+
 @Column(nullable=false,length=64)
 private String Password;
+
+
+
+public String getUserType() {
+	return userType;
+}
+public void setUserType(String userType) {
+	this.userType = userType;
+}
+
 
 public long getId() {
 	return id;
