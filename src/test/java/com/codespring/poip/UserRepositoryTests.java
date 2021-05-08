@@ -26,10 +26,10 @@ import org.springframework.test.annotation.Rollback;
 	public void testCreateUser() {
 
 		User user = new User();
-		user.setEmail("mehul@gmail.com");
-		user.setFirstName("Mehul");
+		user.setEmail("darshan@gmail.com");
+		user.setFirstName("Darshan");
 		user.setPassword("Welcome@123");
-		user.setLastName("Agarwal");
+		user.setLastName("Borse");
 		user.setUserType("student");
 		
 		
@@ -41,10 +41,18 @@ import org.springframework.test.annotation.Rollback;
 		
 		
 		
-		
-		
 	}
 	
+	
+	@Test
+	public void testFindUserByEmail()
+	{
+		
+		String email = "mehul@gmail.com"; 
+		User user = repo.findByEmail(email);
+		assertThat(user).isNotNull();
+		
+	}
 	
 	
 }
