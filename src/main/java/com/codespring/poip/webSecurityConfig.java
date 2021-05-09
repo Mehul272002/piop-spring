@@ -19,8 +19,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class webSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-@Autowired
-private DataSource dataSource;
+
+
 
 
 	
@@ -57,11 +57,13 @@ protected void configure(HttpSecurity http) throws Exception {
         .anyRequest().permitAll()
         .and()
         .formLogin()
+        	.loginPage("/login")
             .usernameParameter("email")
-            .defaultSuccessUrl("/users")
+            .passwordParameter("password")
+           .defaultSuccessUrl("/tempSucess")
             .permitAll()
         .and()
-        .logout().logoutSuccessUrl("/").permitAll();
+        .logout().permitAll();
 }
 
 	
