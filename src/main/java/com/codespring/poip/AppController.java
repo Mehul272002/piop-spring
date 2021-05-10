@@ -98,7 +98,7 @@ public class AppController {
         
     }
     
-    @RequestMapping(value="/facultySucess",method=RequestMethod.POST)
+    @RequestMapping(value="/faculty",method=RequestMethod.POST)
     public ModelAndView facultySucess() {
     	
     	return new ModelAndView  ("facultySucess");
