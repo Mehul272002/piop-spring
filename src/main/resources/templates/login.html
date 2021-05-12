@@ -1,100 +1,29 @@
-<!doctype html>
-<html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="icon" type="image/png" href="../static/images/logo2.png" th:href="@{/images/logo2.png}" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <title>Login_POIP</title>
-    <style th:inline="text">
-      body{
-  
-  
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  
-}
-.login-container{
-  height: 100vh;
-  width: 100%;
-}
-.login-form{
-  margin: auto;
-  width: 370px;
-  padding: 15px;
-  max-width: 100%;
-}
-.login-form .form-control{
-  font-size: 15px;
-  min-height: 48px;
-  font-weight: 500;
-}
-.login-form a{
-  text-decoration: none;
-  color:rgb(53, 128, 138);
-}
-.login-form a:hover{
-  color:#ffffff;
-}
-.forgot-link{
-  font-size: 13px;
-}
-
-.form-control:focus{
-  border-color:#fdfdfd;
-  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
-}
-.btn-custom{
-  background: #296e70;
-  border-color:#296e70;
-  color:#fff;
-  font-size: 15px;
-  font-weight: 600;
-  min-height: 48px;
-}
-.btn-custom:focus,
-.btn-custom:hover,
-.btn-custom:active,
-.btn-custom:active:focus{
-  background: #65cdd1;
-  border-color: #65cdd1;
-  color:#fff;
-}
-.btn-custom:focus{
-  box-shadow: 0 0 0 0.2rem rgba(114,61,190,.25);
-}
-    </style>
+<title>POIP - Login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body th:style="'background: url(/images/bg2.jpg) no-repeat;  background-repeat: no-repeat; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;'">
+<body style="background-color:#ededed;">
+	<div style="background-color:#337ab7;height:50px;"></div>
+	<div class="container-fluid">
+		<div class="row col-lg-4 col-lg-offset-4" style="margin-top: 80px;background-color:#fff;padding:20px;border:solid 1px #ddd;">
+			<!-- <img th:src="@{/images/login.jpg}" class="img-responsive center-block" width="300" height="300" alt="Logo" /> -->
+			<form th:action="@{/login}" method="POST" class="form-signin">
+				<h3 class="form-signin-heading" th:text="Login"></h3>
+				<br /> <input type="text" id="email" name="email" th:placeholder="Email" class="form-control" /> <br /> <input type="password" th:placeholder="Password" id="password" name="password" class="form-control" /> <br />
 
-    <div class="d-flex justify-content-center align-items-center login-container">
-        <form class="login-form text-center" th:action="@{/login}" th:method="POST">
-        	<div th:if="${param.error}">
-          	  <p class="text-danger">invalid username and password</p>
-	        </div>
-            <h1 class="mb-5 font-weight-light text-uppercase"><img src="../static/images/logo2.png" th:src="@{images/logo2.png}" height="100" width="100" alt=""></h1>
-            <div class="form-group">
-                <input type="email" name="email" class="form-control rounded-pill form-control-lg" placeholder="Email-Address" required autofocus/>
-            </div>
-            <div class="form-group">
-                <input type="password" name="password" class="form-control rounded-pill form-control-lg" placeholder="Password" required/>
-            </div>
-            
-            <button type="submit" class="btn mt-5 rounded-pill btn-lg btn-custom btn-block text-uppercase">Log in</button>
-            <p style="color:white" class="mt-3 ">Admin login <a href="Admin.html">>></a></p>
-            <p style="color:white" class="mt-3 ">Faculty_Login <a href="faculty.html">>></a></p>
-        </form>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+				<div align="center" th:if="${param.error}">
+					<p style="font-size: 20; color: #FF1C19;">Email or Password is invalid.</p>
+				</div>
+				<button class="btn btn-lg btn-primary" name="Submit" value="Login" type="Submit" th:text="Login" style="margin-right:10px;"></button>
+				<a href="/recover-password">Forgot password?</a>
+			</form>
+		</div>
+	</div>
 </body>
-
 </html>
